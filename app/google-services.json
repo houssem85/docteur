@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1049608078375",
+    "firebase_url": "https://docteur-4dba1.firebaseio.com",
+    "project_id": "docteur-4dba1",
+    "storage_bucket": "docteur-4dba1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049608078375:android:6d35887e61a4f5a4",
+        "android_client_info": {
+          "package_name": "com.programasoft.docteur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049608078375-e7rukfr89era9ugja9gd0645piqkmelf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.programasoft.docteur",
+            "certificate_hash": "467b2d598f8482d87a1b7f254aa77dc2d6766b22"
+          }
+        },
+        {
+          "client_id": "1049608078375-ku2vo2tkfd3a1qmricqttpoe8ivdf1pg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfbHrJoY8Baq72YMkDwPb5N6xe6_sqA_k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049608078375-ku2vo2tkfd3a1qmricqttpoe8ivdf1pg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
