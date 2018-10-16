@@ -148,12 +148,14 @@
                 android:layout_height="wrap_content"
                 android:text="docteur"
                 android:layout_marginRight="10dp"
+                android:buttonTint="@color/black"
                 />
             <RadioButton
                 android:id="@+id/patient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="patient"
+                android:buttonTint="@color/black"
                 />
         </RadioGroup>
     </LinearLayout>

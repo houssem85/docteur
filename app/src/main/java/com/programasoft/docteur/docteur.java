@@ -1,9 +1,12 @@
 package com.programasoft.docteur;
 
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,14 +62,14 @@ public class docteur {
     public void ajoute(String email, String motde_passe, final Context context, final CircularProgressButton button)
     {
 
-        FirebaseAuth auth=FirebaseAuth.getInstance();
+        final FirebaseAuth auth=FirebaseAuth.getInstance();
         final DatabaseReference databaseReference_docteurs = FirebaseDatabase.getInstance().getReference().child("docteurs");
         button.startAnimation();
         auth.createUserWithEmailAndPassword(email,motde_passe).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
               if(task.isSuccessful())
-              {      databaseReference_docteurs.push().setValue(docteur.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+              {      databaseReference_docteurs.child(auth.getCurrentUser().getUid()).setValue(docteur.this).addOnCompleteListener(new OnCompleteListener<Void>() {
                      @Override
                       public void onComplete(@NonNull Task<Void> task) {
                          if(task.isSuccessful())
@@ -90,6 +93,29 @@ public class docteur {
               }
             }
         });
+
+    }
+    public void ajoute(String id, final Context context, final CircularProgressButton button, final AlertDialog dialog)
+    {
+
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        final DatabaseReference databaseReference_docteurs = FirebaseDatabase.getInstance().getReference().child("docteurs");
+        button.startAnimation();
+        databaseReference_docteurs.child(id).setValue(docteur.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+              if(task.isSuccessful())
+              {dialog.cancel();
+
+              }else
+              {button.revertAnimation();
+               button.setBackgroundResource(R.drawable.rectanglebutton);
+               Toast.makeText(context,"Il ya une ereur .veuillez réessayer",Toast.LENGTH_SHORT).show();
+
+              }
+            }
+        });
+
 
     }
 }

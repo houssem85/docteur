@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:theme="@style/TextLabel"
+        app:errorTextAppearance="@color/colorPrimary">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/nom_profil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:hint="Nom"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+
+            />
+
+    </android.support.design.widget.TextInputLayout>
+    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+        android:id="@+id/btn_confirmer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="CONFIRMER"
+        android:background="@drawable/rectanglebutton"
+        android:layout_margin="10dp"
+        app:spinning_bar_width="4dp"
+        app:spinning_bar_padding="6dp"
+        app:spinning_bar_color="#FFF"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        />
+
+</LinearLayout>

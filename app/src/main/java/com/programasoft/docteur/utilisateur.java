@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -61,7 +62,7 @@ public class utilisateur {
     {
 
 
-        FirebaseAuth auth=FirebaseAuth.getInstance();
+        final FirebaseAuth auth=FirebaseAuth.getInstance();
         final DatabaseReference database_utilisateurs=FirebaseDatabase.getInstance().getReference().child("utilisateurs");
         button.startAnimation();
         auth.createUserWithEmailAndPassword(Email,mot_de_pasee).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -69,7 +70,7 @@ public class utilisateur {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful())
-                {   database_utilisateurs.push().setValue(utilisateur.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                {   database_utilisateurs.child(auth.getCurrentUser().getUid()).setValue(utilisateur.this).addOnCompleteListener(new OnCompleteListener<Void>() {
                      @Override
                       public void onComplete(@NonNull Task<Void> task) {
 
@@ -99,6 +100,26 @@ public class utilisateur {
             }
         });
 
+
+    }
+
+    public void ajoute(String id, final Context context, final CircularProgressButton button, final AlertDialog dialog)
+    {DatabaseReference reference_utilisateurs=FirebaseDatabase.getInstance().getReference().child("utilisateurs");
+     button.startAnimation();
+     reference_utilisateurs.child(id).setValue(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+         @Override
+         public void onComplete(@NonNull Task<Void> task) {
+             if(task.isSuccessful())
+             {dialog.cancel();
+
+             }else
+             {button.revertAnimation();
+              button.setBackgroundResource(R.drawable.rectanglebutton);
+              Toast.makeText(context,"Il ya une ereur .veuillez réessayer",Toast.LENGTH_SHORT).show();
+             }
+
+         }
+     });
 
     }
 }
